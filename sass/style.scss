@@ -26,6 +26,13 @@ a {
   text-decoration: none;
   border-bottom: 1px solid #ccc;
 }
+q {
+  &:before {content: '“'}
+  &:after  {content: '”'}
+}
+cite:before {
+  content: '-';
+}
 
 section {
   clear: left;
@@ -43,6 +50,29 @@ section {
   font-weight: normal;
   font-size: 90%;
   text-shadow: none; 
+}
+
+.awesomeness {
+  padding: 0.5em;
+  color: white;
+  border: 0.1em solid darken(#0c4490, 10%);
+  @include rotate(-2deg);
+  @include text-shadow(transparentize(black, 0.5), 0, -1px, 0);
+  @include linear-gradient(color-stops(#1470ed, #0c4490));
+  @include border-radius(0.5em);
+  @include box-shadow(white, 0, 2px, 0);
+  @include transition(all, 0.5s, ease-out, false);
+  &:hover {
+    @include transform(1.5, 5deg);
+  }
+}
+
+.extbutton {
+  
+}
+
+pre.textmate-source {
+  background-color: inherit !important;
 }
 
 .timeline {
