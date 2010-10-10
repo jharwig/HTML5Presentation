@@ -8,6 +8,10 @@ body {
   background: #eee;
   font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', arial, sans-serif;
   
+  cursor: default;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  
   &.presentmode {
     overflow: hidden;
     .slides {
@@ -15,6 +19,21 @@ body {
       -moz-transform-origin: 0 0;
       -webkit-transition: -webkit-transform 0.5s ease-in-out;
       -moz-transition: -webkit-transform 0.5s ease-in-out;    
+      
+      section {
+        &.b0 .b0, 
+        &.b1 .b1, 
+        &.b2 .b2, 
+        &.b3 .b3, 
+        &.b4 .b4 { 
+          opacity: 1.0;
+        }
+                                        
+        .b0, .b1, .b2, .b3, .b4 {
+          @include transition(all, 0.3s, ease-out);
+          opacity: 0;
+        }        
+      }
     }
   }
 }
@@ -22,15 +41,22 @@ body {
 header, h1 {
   @include text-shadow(white, 0, 1px, 0);
 }
-
+h2, h3, h4, h5 {
+  font-weight: normal;
+}
 a {
   color: inherit;
   text-decoration: none;
   border-bottom: 1px solid #ccc;
 }
-q {
+q {  
   &:before {content: '“'}
   &:after  {content: '”'}
+}
+q, cite {
+  display:block;
+  text-align:right;
+  width:75%;
 }
 cite:before {
   content: '-';
@@ -57,37 +83,83 @@ cite:before {
   display: inline-block;
   
   & > * {
-    margin: 0 20px;
+    margin: 20px;
+  }
+  img {
+    margin: 1em;
+    width: 50%;
+  }
+  pre {
+    margin-top: 1em;
   }
 }
 
-.code {
-  font-family: Monaco;
+.code, pre {
   font-weight: normal;
   font-size: 90%;
   text-shadow: none; 
+  font-family: 'Droid Sans Mono', courier; 
+}
+
+@-webkit-keyframes pulse2 {
+  from {
+    color: white;
+  }
+  50% {
+    color: lighten(#1470ed, 20%);
+  }  
+  100% {
+    color: white;
+  }
+}
+
+@-webkit-keyframes mypulse {
+  from {
+    @include transform();
+  }
+  25% {
+    @include transform(1.05, 0, 0, 0, 15deg);
+  }
+  50% {
+    @include transform(1.0);
+  }  
+  75% {
+    @include transform(1.05, 0, 0, 0, -15deg);
+  }  
+  100% {
+    @include transform();
+  }
 }
 
 .awesomeness {
   padding: 0.5em;
   color: white;
   border: 0.1em solid darken(#0c4490, 10%);
-  @include rotate(-2deg);
-  @include text-shadow(transparentize(black, 0.5), 0, -1px, 0);
-  @include linear-gradient(color-stops(#1470ed, #0c4490));
+  @include text-shadow(transparentize(#0c4490, 0.5), 0, -2px, 0);
+  @include linear-gradient(color-stops(#1470ed, #1470ed 50%, #0c4490));
   @include border-radius(0.5em);
-  @include box-shadow(white, 0, 2px, 0);
+  @include box-shadow(lighten(#1470ed, 20%), 0, 1px, 0, 0, inset);
   @include transition(all, 0.5s, ease-out, false);
+  
   &:hover {
-    @include transform(1.5, 5deg);
+    cursor: pointer;  
+    -webkit-animation:mypulse 1s ease-in-out infinite;
+    @include linear-gradient(color-stops(lighten(#1470ed, 10%), lighten(#0c4490, 10%)));    
+  }
+  &:active {
+    @include box-shadow(white, 0, 2px, 0);
+    @include linear-gradient(color-stops(darken(#1470ed, 10%), darken(#0c4490, 10%)));  
   }
 }
+
+
 
 .extbutton {
   /*TODO copy from work */
 }
 
-pre.textmate-source {
+body pre.textmate-source {
+  font-family: 'Droid Sans Mono', courier; 
   background-color: inherit !important;
   display: block;
 }
@@ -97,7 +169,7 @@ pre.textmate-source {
   border-top: 1px solid white;
   margin: 4em 0 0;
   padding: 0.5em 3em 0 0;
-  @include box-shadow(#ccc, 0, -1px, 0);
+  @include box-shadow(#ccc, 0, -2px, 0);
   
   li {
     display: inline-block;
