@@ -1,5 +1,6 @@
 @import "compass";
 
+$orange: #E97000;
 
 body {
   width: 2000px;
@@ -53,14 +54,8 @@ q {
   &:before {content: '“'}
   &:after  {content: '”'}
 }
-q, cite {
-  display:block;
-  text-align:right;
-  width:75%;
-}
-cite:before {
-  content: '-';
-}
+
+
 #browser {
   position: absolute;
   top: 20px;
@@ -91,6 +86,35 @@ cite:before {
   }
   pre {
     margin-top: 1em;
+  }
+  ul li {
+    margin: 0.5em;
+    cite {
+      display: inline;
+      margin-left: 0.5em;
+    }
+  }
+  
+  q, cite {
+    display:block;
+    text-align:right;
+    width:75%;
+    margin: auto;
+    clear: left;
+    
+    &.short {
+      clear: none;
+      float: left;
+      width: 40%;
+      margin: 5px;      
+    }
+  }
+  cite.short {text-align: left;}  
+  cite:before {
+    content: '-';
+  }
+  strong {
+    color: $orange;
   }
 }
 
@@ -164,10 +188,57 @@ body pre.textmate-source {
   display: block;
 }
 
+.popover {
+  display: none;
+  position: absolute;
+  width: 400px;
+  margin: 0;
+  padding: 0.5em;  
+  background: lighten($orange, 35%);
+  z-index:11;  
+  top: 0px;
+  left: 50%;
+  margin-left:-200px;  
+  border: 1px solid $orange;
+  border-top: 0;
+  font-size: 110%;  
+  list-style: square outside none;
+  
+  @include border-bottom-radius(5px);
+  @include box-shadow(transparentize(black, 0.3), 0, 1px, 20px);
+  li {
+    padding: .2em 0;
+    display: block;
+    height: auto;
+  }
+}
+
+.list {
+  list-style: none; 
+}
+
+.slides section.center {
+  text-align: center;
+}
+
+.columns4 {
+  margin: 0.5em 0;
+  padding: 0;
+  @include column-count(4);
+}
+
+.columns2 {
+  margin: 0.5em 0;
+  padding: 0;
+  @include column-count(2);
+}
+
 .slides section .timeline {
-  list-style: none;
+  & > ul {
+    list-style: none;    
+  }
   border-top: 1px solid white;
-  margin: 4em 0 0;
+  margin: 6em 0 0;
   padding: 0.5em 3em 0 0;
   @include box-shadow(#ccc, 0, -2px, 0);
   
@@ -176,22 +247,26 @@ body pre.textmate-source {
     height: 10em;
     position: relative;
     time {
-      color: #555555;
-      display: inline-block;
-      font-size: 80%;
-      position: relative;
-      text-align: center;
-      top: -43px;
-      width: 90px; }
+      color:#555555;
+      display:inline-block;
+      font-size:80%;
+      left:45px;
+      position:relative;
+      text-align:left;
+      top:-39px;
+      width:90px;
+      @include rotate(-45deg);
+      @include transform-origin(0, 100%);      
+    }
     div {
       left: 45px;
       margin: 0;
       position: absolute;
       width: 10em;
       top: 0;
-      -moz-transform: rotate(45deg);
-      -moz-transform-origin: 0 0;
-      -webkit-transform: rotate(45deg);
-      -webkit-transform-origin: 0 0;
+      white-space: nowrap;
+      @include rotate(45deg);
+      @include transform-origin(0, 0);
+      z-index: 10;
       small {
         display: none; } } } }

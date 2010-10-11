@@ -21,7 +21,8 @@ var Sliderrr = function() {
     });
   }
   function move(func) {
-
+    $('.popover').hide();
+    
     // builds
     if (func == 'next') {
       for (var i = 0; i < 5; i++) {
@@ -56,10 +57,14 @@ var Sliderrr = function() {
       ARROW_UP = 38,
       ARROW_RIGHT = 39,
       ARROW_DOWN = 40,
+      TAB = 9,
       ESC = 27;
 
-    $(document).keydown(function(e) {
+    $(document).keydown(function(e) {      
       switch (e.keyCode) {
+        case TAB: 
+          e.preventDefault();
+          break;
         case ARROW_LEFT: 
           movePrevious();
           e.preventDefault();
@@ -69,34 +74,59 @@ var Sliderrr = function() {
           e.preventDefault();
           break;
         case ESC:
-          $('#browser').remove();
+          if (e.metaKey) {
+            $(document.body).removeClass('presentmode');
+            $('.slides').css({
+              '-moz-transform': '',
+              '-webkit-transform': ''          
+            });
+          } else {
+            $('#browser').remove();            
+          }
           break;
       }
     });
     
     $('.slides section').live('dblclick', function() {
-      if ($(document.body).hasClass('presentmode')) {
-        $(document.body).removeClass('presentmode');
-        $('.slides').css({
-          '-moz-transform': '',
-          '-webkit-transform': ''          
-        });
-      } else {
+      if (!$(document.body).hasClass('presentmode')) {
         document.body.scrollTop = 0;
         current = $(this);
         showSlide(current);
       }
     });
     
+    $('.popover').live('click', function(e) {
+      e.preventDefault();
+      $(this).hide();
+    })
+    
     $('a').live('click', function(e) {
       e.preventDefault();      
+      
+      var popoverId = $(this).attr('data:popover');
+      if (popoverId) {
+        $('#' + popoverId).appendTo(document.body).show();        
+        return;
+      }
+      
       $(document.body).append('<div id="browser"><iframe id="browser_frame" src="' + this.href + '"></iframe></div>');
       var browser = document.getElementById('browser'),
         frame = document.getElementById('browser_frame');
       frame.contentWindow.onload = function() {
+
         frame.contentWindow.document.addEventListener('keydown', function(e) {
+          var KEY_S = 83;
           if (e.keyCode == ESC) {
             browser.parentNode.removeChild(browser);
+          } else if (e.keyCode == KEY_S) {            
+            // var document = frame.contentWindow.document;
+            // 
+            // document.body.innerHTML = '';
+            // 
+            // var pre = document.body.appendChild(document.createElement("pre"));            
+            // pre.style.overflow = 'auto';
+            // pre.style.whiteSpace = 'pre-wrap';
+            // pre.appendChild(document.createTextNode(document.documentElement.innerHTML));            
           }
         }, false);        
       };
@@ -117,3 +147,31 @@ var Sliderrr = function() {
     init: init
   }
 }();
+
+
+// Space timeline
+$(function() {
+  $('.timeline').each(function() {
+    var dates = $.map($(this).find('time'), function(time) {
+      return {
+        date: new Date($(time).attr('datetime').replace(/-/g,'/')),
+        el: time
+      };
+    });
+    if (dates.length === 0) {
+      return;
+    }
+
+    var first = dates[0].date,
+      last = dates[dates.length-1].date,
+      range = last - first;
+      
+    $.each(dates, function(i, d) {
+      if (i < dates.length - 1) {
+        var years = (dates[i+1].date.getTime() - d.date.getTime()) / 1000 / 60 / 60 / 24 / 365,
+          width = Math.max(Math.min((years * 1.5), 20), 2);
+        $(d.el).parents('li').width(width + 'em');  
+      }            
+    });
+  });
+});
