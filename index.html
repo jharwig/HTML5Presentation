@@ -29,7 +29,7 @@
       <!-- If you haven't looked at it you're behind -->
     </section>
     
-    <section style="clear:none;">
+    <section class="related">
       <h1>What is HTML5?</h1>
        <h2 class="b0">depends on <strong>who</strong> you ask&hellip;</h2>
        <ul class="b0">
@@ -116,7 +116,7 @@
         </li>
       </ol>          
     </section>
-    <section style="clear:none">
+    <section class="related">
       <h1>June 2022 ?!?!?</h1>
       <q class="b0">The only people that really give a damn about two thousand twenty two are people who write timetables for a living.</q><cite class="b0"><a href="http://jeffcroft.com/blog/2008/sep/11/two-thousand-twenty-two/">Jeff Croft</a></cite>
     </section>
@@ -140,6 +140,7 @@
               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
             <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> -->
+      <br>
             
       <pre class="textmate-source mac_classic b0">
       <span class="text text_html text_html_basic"><span class="meta meta_tag meta_tag_sgml meta_tag_sgml_html"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_html">&lt;!</span><span class="meta meta_tag meta_tag_sgml meta_tag_sgml_doctype meta_tag_sgml_doctype_html"><span class="entity entity_name entity_name_tag entity_name_tag_doctype entity_name_tag_doctype_html">DOCTYPE</span> html</span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_html">&gt;</span></span>
@@ -150,12 +151,12 @@
       <html lang="en"> -->
     </section>      
     
-    <section class="center">
+    <section class="center related">
       <h1>New <strong>Structure</strong> Elements</h1>
       <img src="images/structure.svg">      
     </section>
     
-    <section>
+    <section class="center related">
       <h1><strong>Absent</strong> Elements</h1>
       <ul class="columns2">
         <li>basefont</li>
@@ -171,7 +172,7 @@
         <li>applet</li>
     </section>
     
-    <section>
+    <section class="related">
       <h1><strong>Form</strong> Support</h1>
 
       <form>
@@ -204,59 +205,108 @@
     
     <section>
       <h1>JavaScript</h1>
-      <ul>
-        <li>WebWorkers</li>
-        <li>Geolocation</li>
-        <li>Cross window messaging</li>
-        <li>Offline</li>
-        <li>Sqlite Database</li>
-        <li>localStorage / sessionStorage</li>
+      <ul>   
+        <li>Canvas</li>
+        <li class="b0"><a href="http://www.w3.org/TR/2010/WD-html5-20100624/Overview.html#dom-document-getelementsbyclassname">getElementsByClassName</a></li>
+        <li class="b1"><a href="http://www.w3.org/TR/2010/WD-html5-20100624/Overview.html#dnd">Drag and Drop</a></li>     
+        <li class="b2"><a href="http://www.w3.org/TR/2010/WD-html5-20100624/Overview.html#dom-history-pushstate">pushState, replaceState, onhashchange</a></li>
+        <li class="b3"><a href="http://www.w3.org/TR/2010/WD-html5-20100624/Overview.html#application-cache">Offline Application Cache</a></li>
+        <li class="b4"><a href="http://www.w3.org/TR/2010/WD-html5-20100624/Overview.html#attr-data">Custom data attributes</a>
+          <pre class="textmate-source mac_classic"><span class="text text_html text_html_basic"><span class="meta meta_tag meta_tag_inline meta_tag_inline_any meta_tag_inline_any_html"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_begin punctuation_definition_tag_begin_html">&lt;</span><span class="entity entity_name entity_name_tag entity_name_tag_inline entity_name_tag_inline_any entity_name_tag_inline_any_html">input</span> <span class="entity entity_other entity_other_attribute-name entity_other_attribute-name_html">data-regex</span>=<span class="string string_quoted string_quoted_double string_quoted_double_html"><span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_begin punctuation_definition_string_begin_html">"</span>\.com$<span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_end punctuation_definition_string_end_html">"</span></span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_end punctuation_definition_tag_end_html">&gt;</span></span></span></pre>
+          <!-- <input data-regex="\.com$"> -->
+          <pre class="textmate-source mac_classic"><span class="source source_js">input<span class="meta meta_delimiter meta_delimiter_method meta_delimiter_method_period meta_delimiter_method_period_js">.</span>datasets<span class="meta meta_brace meta_brace_square meta_brace_square_js">[</span><span class="string string_quoted string_quoted_single string_quoted_single_js"><span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_begin punctuation_definition_string_begin_js">'</span>regex<span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_end punctuation_definition_string_end_js">'</span></span><span class="meta meta_brace meta_brace_square meta_brace_square_js">]</span></span></pre>
+          <!-- input.datasets['regex'] -->
+        </li>
+        <li class="b5"><a href="http://www.w3.org/TR/2010/WD-html5-20100624/Overview.html#dom-navigator-registerprotocolhandler">registerProtocolHandler / registerContentHandler</a></li>
       </ul>
     </section>
-  
-    <section>
-      <h1>Browser Support</h1>
-      <p>insert browser icons with degree of support
-    
-      How do I use it now, then?</p>
-    </section>  
-    <section>
-      <h1>Progressive Enhancement</h1>
-      <a href="http://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills">shims</a>
-      
-      <a href="http://www.subway.com">subway</a>
+    <section class="related">
+      <h1>Related Specifications</h1>
+      <ul>
+        <li><a href="http://dev.w3.org/geo/api/spec-source.html">Geolocation</a></li>
+        <li><a href="http://dev.w3.org/html5/postmsg/">Cross window messaging</a></li>        
+        <li><a href="http://www.w3.org/TR/IndexedDB/">WebSQL / IndexedDB</a></li>
+        <li><a href="http://www.w3.org/TR/webstorage/#the-localstorage-attribute">WebStorage</a> (local, session)</li>
+        <li><a href="http://www.w3.org/TR/workers/">WebWorkers</a></li>
+        <li><a href="http://dev.w3.org/html5/websockets/">WebSockets</a></li>        
+        <li><a href="https://cvs.khronos.org/svn/repos/registry/trunk/public/webgl/doc/spec/WebGL-spec.html">WebGL</a></li>
+      </ul>
     </section>
     
-    <section>
-      <h1>Modernizr</h1>
-      <p>small js library detects features
-      allows ie styling of new elements</p>
-    </section>  
-  
     
-  
-
+    <section>
+      <h1>Browser Support</h1>
+      <a href="http://html5test.com/">HTML5 Browser Test</a>
+      <a href="http://html5readiness.com/">HTML5 Readiness</a>
+    </section>  
+    
+    <section class="related">
+      <h1>Progressive Enhancement</h1>
+      <h2>feature <strong>detection</strong> with <a href="http://www.modernizr.com/">Modernizr</a></h2>
+      <h2>fill functionality with browser <a href="http://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills">shims</a></h2>      
+    </section>
   
     <section><h1>What about CSS3?</h1></section>
     
-    <section style="clear:none;"><h1 class="awesomeness">Awesomeness</h1></section>
+    <section class="related">
+      <h1 class="awesomeness" style="text-align:center">Awesomeness</h1>
+            
+      <pre class="textmate-source mac_classic b0"><span class='linenum'>    1</span> <span class="text text_html text_html_basic"><span class="meta meta_tag meta_tag_block meta_tag_block_any meta_tag_block_any_html"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_begin punctuation_definition_tag_begin_html">&lt;</span><span class="entity entity_name entity_name_tag entity_name_tag_block entity_name_tag_block_any entity_name_tag_block_any_html">h1</span> <span class="entity entity_other entity_other_attribute-name entity_other_attribute-name_html">class</span>=<span class="string string_quoted string_quoted_double string_quoted_double_html"><span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_begin punctuation_definition_string_begin_html">"</span>awesomeness<span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_end punctuation_definition_string_end_html">"</span></span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_end punctuation_definition_tag_end_html">&gt;</span></span>Awesomeness<span class="meta meta_tag meta_tag_block meta_tag_block_any meta_tag_block_any_html"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_begin punctuation_definition_tag_begin_html">&lt;/</span><span class="entity entity_name entity_name_tag entity_name_tag_block entity_name_tag_block_any entity_name_tag_block_any_html">h1</span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_end punctuation_definition_tag_end_html">&gt;</span></span></span></pre>
+      
+      <pre class="textmate-source mac_classic b1">
+<span class='linenum'>    1</span> <span class="source source_css"><span class="meta meta_selector meta_selector_css"><span class="entity entity_other entity_other_attribute-name entity_other_attribute-name_class entity_other_attribute-name_class_css"><span class="punctuation punctuation_definition punctuation_definition_entity punctuation_definition_entity_css">.</span>awesomeness</span> </span><span class="meta meta_property-list meta_property-list_css"><span class="punctuation punctuation_section punctuation_section_property-list punctuation_section_property-list_css">{</span>
+<span class='linenum'>    2</span>   <span class="meta meta_property-name meta_property-name_css"><span class="support support_type support_type_property-name support_type_property-name_css">padding</span></span><span class="meta meta_property-value meta_property-value_css"><span class="punctuation punctuation_separator punctuation_separator_key-value punctuation_separator_key-value_css">:</span> <span class="constant constant_numeric constant_numeric_css">0.5</span><span class="keyword keyword_other keyword_other_unit keyword_other_unit_css">em</span><span class="punctuation punctuation_terminator punctuation_terminator_rule punctuation_terminator_rule_css">;</span></span>
+<span class='linenum'>    3</span>   <span class="meta meta_property-name meta_property-name_css"><span class="support support_type support_type_property-name support_type_property-name_css">color</span></span><span class="meta meta_property-value meta_property-value_css"><span class="punctuation punctuation_separator punctuation_separator_key-value punctuation_separator_key-value_css">:</span> <span class="support support_constant support_constant_color support_constant_color_w3c-standard-color-name support_constant_color_w3c-standard-color-name_css">white</span><span class="punctuation punctuation_terminator punctuation_terminator_rule punctuation_terminator_rule_css">;</span></span>
+<span class='linenum'>    4</span>   <span class="meta meta_property-name meta_property-name_css"><span class="support support_type support_type_property-name support_type_property-name_css">border</span></span><span class="meta meta_property-value meta_property-value_css"><span class="punctuation punctuation_separator punctuation_separator_key-value punctuation_separator_key-value_css">:</span> <span class="constant constant_numeric constant_numeric_css">0.1</span><span class="keyword keyword_other keyword_other_unit keyword_other_unit_css">em</span> <span class="support support_constant support_constant_property-value support_constant_property-value_css">solid</span> <span class="constant constant_other constant_other_color constant_other_color_rgb-value constant_other_color_rgb-value_css"><span class="punctuation punctuation_definition punctuation_definition_constant punctuation_definition_constant_css">#</span>082e61</span><span class="punctuation punctuation_terminator punctuation_terminator_rule punctuation_terminator_rule_css">;</span></span>
+<span class='linenum'>    5</span>   <span class="meta meta_property-name meta_property-name_css"><span class="support support_type support_type_property-name support_type_property-name_css">text-shadow</span></span><span class="meta meta_property-value meta_property-value_css"><span class="punctuation punctuation_separator punctuation_separator_key-value punctuation_separator_key-value_css">:</span> rgba(<span class="constant constant_numeric constant_numeric_css">12</span>,<span class="constant constant_numeric constant_numeric_css"> 68</span>,<span class="constant constant_numeric constant_numeric_css"> 144</span>,<span class="constant constant_numeric constant_numeric_css"> 0.5</span>)<span class="constant constant_numeric constant_numeric_css"> 0</span> <span class="constant constant_numeric constant_numeric_css">-2</span><span class="keyword keyword_other keyword_other_unit keyword_other_unit_css">px</span><span class="constant constant_numeric constant_numeric_css"> 0</span><span class="punctuation punctuation_terminator punctuation_terminator_rule punctuation_terminator_rule_css">;</span></span>
+<span class='linenum'>    6</span>   <span class="meta meta_property-name meta_property-name_css"><span class="support support_type support_type_property-name support_type_property-name_css">background-image</span></span><span class="meta meta_property-value meta_property-value_css"><span class="punctuation punctuation_separator punctuation_separator_key-value punctuation_separator_key-value_css">:</span> linear-gradient(<span class="support support_constant support_constant_property-value support_constant_property-value_css">top</span>, <span class="constant constant_other constant_other_color constant_other_color_rgb-value constant_other_color_rgb-value_css"><span class="punctuation punctuation_definition punctuation_definition_constant punctuation_definition_constant_css">#</span>1470ed</span><span class="constant constant_numeric constant_numeric_css"> 0</span><span class="keyword keyword_other keyword_other_unit keyword_other_unit_css">%</span>, <span class="constant constant_other constant_other_color constant_other_color_rgb-value constant_other_color_rgb-value_css"><span class="punctuation punctuation_definition punctuation_definition_constant punctuation_definition_constant_css">#</span>1470ed</span><span class="constant constant_numeric constant_numeric_css"> 50</span><span class="keyword keyword_other keyword_other_unit keyword_other_unit_css">%</span>, <span class="constant constant_other constant_other_color constant_other_color_rgb-value constant_other_color_rgb-value_css"><span class="punctuation punctuation_definition punctuation_definition_constant punctuation_definition_constant_css">#</span>0c4490</span><span class="constant constant_numeric constant_numeric_css"> 100</span><span class="keyword keyword_other keyword_other_unit keyword_other_unit_css">%</span>)<span class="punctuation punctuation_terminator punctuation_terminator_rule punctuation_terminator_rule_css">;</span></span>
+<span class='linenum'>    7</span>   <span class="meta meta_property-name meta_property-name_css"><span class="support support_type support_type_property-name support_type_property-name_css">border</span>-radius</span><span class="meta meta_property-value meta_property-value_css"><span class="punctuation punctuation_separator punctuation_separator_key-value punctuation_separator_key-value_css">:</span> <span class="constant constant_numeric constant_numeric_css">0.5</span><span class="keyword keyword_other keyword_other_unit keyword_other_unit_css">em</span><span class="punctuation punctuation_terminator punctuation_terminator_rule punctuation_terminator_rule_css">;</span></span>
+<span class='linenum'>    8</span>   <span class="meta meta_property-name meta_property-name_css">box-shadow</span><span class="meta meta_property-value meta_property-value_css"><span class="punctuation punctuation_separator punctuation_separator_key-value punctuation_separator_key-value_css">:</span> <span class="constant constant_other constant_other_color constant_other_color_rgb-value constant_other_color_rgb-value_css"><span class="punctuation punctuation_definition punctuation_definition_constant punctuation_definition_constant_css">#</span>73aaf4</span><span class="constant constant_numeric constant_numeric_css"> 0 1</span><span class="keyword keyword_other keyword_other_unit keyword_other_unit_css">px</span><span class="constant constant_numeric constant_numeric_css"> 0 0</span> <span class="support support_constant support_constant_property-value support_constant_property-value_css">inset</span><span class="punctuation punctuation_terminator punctuation_terminator_rule punctuation_terminator_rule_css">;</span></span>
+<span class='linenum'>    9</span>   <span class="meta meta_property-name meta_property-name_css">transition</span><span class="meta meta_property-value meta_property-value_css"><span class="punctuation punctuation_separator punctuation_separator_key-value punctuation_separator_key-value_css">:</span> all<span class="constant constant_numeric constant_numeric_css"> 0.5</span>s ease-out<span class="punctuation punctuation_terminator punctuation_terminator_rule punctuation_terminator_rule_css">;</span></span> <span class="punctuation punctuation_section punctuation_section_property-list punctuation_section_property-list_css">}</span></span>
+<span class='linenum'>   10</span> <span class="meta meta_selector meta_selector_css"><span class="entity entity_other entity_other_attribute-name entity_other_attribute-name_class entity_other_attribute-name_class_css"><span class="punctuation punctuation_definition punctuation_definition_entity punctuation_definition_entity_css">.</span>awesomeness</span><span class="entity entity_other entity_other_attribute-name entity_other_attribute-name_pseudo-class entity_other_attribute-name_pseudo-class_css"><span class="punctuation punctuation_definition punctuation_definition_entity punctuation_definition_entity_css">:</span>hover</span> </span><span class="meta meta_property-list meta_property-list_css"><span class="punctuation punctuation_section punctuation_section_property-list punctuation_section_property-list_css">{</span>
+<span class='linenum'>   11</span>   <span class="meta meta_property-name meta_property-name_css"><span class="support support_type support_type_property-name support_type_property-name_css">cursor</span></span><span class="meta meta_property-value meta_property-value_css"><span class="punctuation punctuation_separator punctuation_separator_key-value punctuation_separator_key-value_css">:</span> <span class="support support_constant support_constant_property-value support_constant_property-value_css">pointer</span><span class="punctuation punctuation_terminator punctuation_terminator_rule punctuation_terminator_rule_css">;</span></span>
+<span class='linenum'>   12</span>   <span class="meta meta_property-name meta_property-name_css">-webkit-animation</span><span class="meta meta_property-value meta_property-value_css"><span class="punctuation punctuation_separator punctuation_separator_key-value punctuation_separator_key-value_css">:</span> pulse<span class="constant constant_numeric constant_numeric_css"> 1</span>s ease-in-out infinite<span class="punctuation punctuation_terminator punctuation_terminator_rule punctuation_terminator_rule_css">;</span></span>    
+<span class='linenum'>   13</span>   <span class="meta meta_property-name meta_property-name_css"><span class="support support_type support_type_property-name support_type_property-name_css">background-image</span></span><span class="meta meta_property-value meta_property-value_css"><span class="punctuation punctuation_separator punctuation_separator_key-value punctuation_separator_key-value_css">:</span> linear-gradient(<span class="support support_constant support_constant_property-value support_constant_property-value_css">top</span>, <span class="constant constant_other constant_other_color constant_other_color_rgb-value constant_other_color_rgb-value_css"><span class="punctuation punctuation_definition punctuation_definition_constant punctuation_definition_constant_css">#</span>438df1</span><span class="constant constant_numeric constant_numeric_css"> 0</span><span class="keyword keyword_other keyword_other_unit keyword_other_unit_css">%</span>, <span class="constant constant_other constant_other_color constant_other_color_rgb-value constant_other_color_rgb-value_css"><span class="punctuation punctuation_definition punctuation_definition_constant punctuation_definition_constant_css">#</span>105abf</span><span class="constant constant_numeric constant_numeric_css"> 100</span><span class="keyword keyword_other keyword_other_unit keyword_other_unit_css">%</span>)<span class="punctuation punctuation_terminator punctuation_terminator_rule punctuation_terminator_rule_css">;</span></span> <span class="punctuation punctuation_section punctuation_section_property-list punctuation_section_property-list_css">}</span></span></pre>
+      <!-- .awesomeness {
+              padding: 0.5em;
+              color: white;
+              border: 0.1em solid #082e61;
+              text-shadow: rgba(12, 68, 144, 0.5) 0 -2px 0;
+              background-image: linear-gradient(top, #1470ed 0%, #1470ed 50%, #0c4490 100%);
+              border-radius: 0.5em;
+              box-shadow: #73aaf4 0 1px 0 0 inset;
+              transition: all 0.5s ease-out; }
+            .awesomeness:hover {
+              cursor: pointer;
+              -webkit-animation: pulse 1s ease-in-out infinite;    
+              background-image: linear-gradient(top, #438df1 0%, #105abf 100%); }
+             -->
+    </section>
     
-    <section class="center" style="clear:none;">
+    <section class="related">
+      <h1>Just a few of the <strong>new</strong> CSS3 Features</h1> 
+      <ul class="columns4">
+        <li>Gradients</li>      
+        <li>Transitions</li>
+        <li>Backgrounds</li>
+        <li>Transformations</li>
+        <li>Shadows</li>
+        <li>Masks</li>
+        <li>Columns</li>
+        <li>WebFonts</li>
+        <li>SVG</li>
+        <li>HSLA</li>
+        <li>RGBA</li>
+      </ul>
+    </section>
+    
+    <section class="center">
       <h1>I Hate Images in User Interfaces</h1>
       <h2>1x300px gradient images must <strong>die</strong></h2>
       <img src="images/ext_button_slice.png" style="width:50%;">      
     </section>  
     
-    <section>
-      <ul>
-        <li>gradients</li>      
-        <li>animation</li>
-        <li>multiple backgrounds</li>
-        <li>box shadow</li>
-        <li>text shadow</li>      
-        <li>image masks</li>
-      </ul>
-    </section>
+    
   
     <section>
       <h1>Non-<strong>semantic</strong> DOM elements</h1>
@@ -310,7 +360,7 @@
           </table> -->
     </section>
   
-    <section>
+    <section class="related">
       <h1><strong>One</strong> DOM Element</h1>
       <pre class="textmate-source mac_classic"><span class="text text_html text_html_basic"><span class="meta meta_tag meta_tag_inline meta_tag_inline_any meta_tag_inline_any_html"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_begin punctuation_definition_tag_begin_html">&lt;</span><span class="entity entity_name entity_name_tag entity_name_tag_inline entity_name_tag_inline_any entity_name_tag_inline_any_html">button</span> <span class="entity entity_other entity_other_attribute-name entity_other_attribute-name_html">class</span>=<span class="string string_quoted string_quoted_double string_quoted_double_html"><span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_begin punctuation_definition_string_begin_html">"</span>extbutton<span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_end punctuation_definition_string_end_html">"</span></span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_end punctuation_definition_tag_end_html">&gt;</span></span>Download jQuery UI<span class="meta meta_tag meta_tag_inline meta_tag_inline_any meta_tag_inline_any_html"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_begin punctuation_definition_tag_begin_html">&lt;/</span><span class="entity entity_name entity_name_tag entity_name_tag_inline entity_name_tag_inline_any entity_name_tag_inline_any_html">button</span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_end punctuation_definition_tag_end_html">&gt;</span></span></span></pre>
       <button class="extbutton">Download jQuery UI</button>

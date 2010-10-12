@@ -26,11 +26,12 @@ body {
         &.b1 .b1, 
         &.b2 .b2, 
         &.b3 .b3, 
-        &.b4 .b4 { 
+        &.b4 .b4,
+        &.b5 .b5 { 
           opacity: 1.0;
-        }
-                                        
-        .b0, .b1, .b2, .b3, .b4 {
+        }        
+                                                               
+        .b0, .b1, .b2, .b3, .b4, .b5 {
           @include transition(all, 0.3s, ease-out);
           opacity: 0;
         }        
@@ -38,6 +39,7 @@ body {
     }
   }
 }
+
 
 header, h1 {
   @include text-shadow(white, 0, 1px, 0);
@@ -72,10 +74,15 @@ q {
   }
 }
 .slides section {
+  
   clear: left;
   float: left;
   margin: 1em 0;
   display: inline-block;
+  
+  &.related {
+    clear:none;
+  }
   
   & > * {
     margin: 20px;

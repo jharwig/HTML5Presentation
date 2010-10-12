@@ -25,7 +25,7 @@ var Sliderrr = function() {
     
     // builds
     if (func == 'next') {
-      for (var i = 0; i < 5; i++) {
+      for (var i = 0; i < 6; i++) {
         var cls = 'b' + i;
         if (current.find('.' + cls).length === 0) {
           break;
@@ -41,7 +41,7 @@ var Sliderrr = function() {
     var el = current[func]('section');
     if (el && el.length) {
       current = el;
-      current.removeClass('b0 b1 b2 b2 b3 b4');        
+      current.removeClass('b0 b1 b2 b2 b3 b4 b5');        
       showSlide(current);
     }        
   }
@@ -51,7 +51,7 @@ var Sliderrr = function() {
   function movePrevious() {
     move('prev');
   }
-  
+              
   function init() {
     var ARROW_LEFT = 37,
       ARROW_UP = 38,
