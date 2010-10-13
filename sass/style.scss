@@ -195,9 +195,11 @@ q {
     color-stop(1.00, rgba(255,255,255,0))
   ), -webkit-gradient(linear, left bottom, left top, color-stop(0, $blue), color-stop(1, lighten($blue, 25%)));
   -webkit-box-shadow: inset 0px 1px 0px 0px lighten($blue, 35%), inset 0px -1px 1px darken($blue, 10%);  
-  -webkit-animation: animate-stripes 2s linear infinite;
   &:hover {
-    -webkit-animation:mypulse 1s ease-in-out infinite, animate-stripes 2s linear infinite;
+    -webkit-animation: animate-stripes 2s linear infinite;
+  }
+  &:active {
+    -webkit-animation:mypulse 1s ease-in-out infinite, animate-stripes 2s linear infinite;    
   }
 }
 
