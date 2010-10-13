@@ -1,12 +1,13 @@
 @import "compass";
 
 $orange: #E97000;
+$bg: #eee;
 
 body {
   width: 2000px;
   margin: 0;
   padding: 0;
-  background: #eee;
+  background: $bg;
   font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', arial, sans-serif;
   
   cursor: default;
@@ -42,7 +43,7 @@ body {
 
 
 header, h1 {
-  @include text-shadow(white, 0, 1px, 0);
+  @include text-shadow(rgba(255,255,255,0.5), 0, 1px, 0);  
 }
 h2, h3, h4, h5 {
   font-weight: normal;
@@ -129,7 +130,7 @@ q {
   font-weight: normal;
   font-size: 90%;
   text-shadow: none; 
-  font-family: 'Droid Sans Mono', courier; 
+  font-family: 'Menlo-Regular', 'Monaco', courier, monospaced;
 }
 
 @-webkit-keyframes pulse2 {
@@ -244,6 +245,7 @@ body pre.textmate-source {
   font-family: 'Droid Sans Mono', courier; 
   background-color: inherit !important;
   display: block;
+  margin: 1em 0;
 }
 
 .popover {

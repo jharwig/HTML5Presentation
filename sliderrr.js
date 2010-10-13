@@ -12,8 +12,9 @@ var Sliderrr = function() {
         scale = Math.min(scaleX, scaleY),
         transX = (s.data('offset').left*scale*-1 + vW/2 - w*scale/2),
         transY = (s.data('offset').top*scale*-1 + vH/2 - h*scale/2),
-        transform = 'translate('+ transX.toFixed(4) + 'px, ' + transY.toFixed(4) + 'px) scale(' + scale.toFixed(4) + ')';    
-      
+        transform = 'translate('+ transX.toFixed(4) + 'px,' + transY.toFixed(4) + 'px) scale(' + scale.toFixed(4) + ')';
+    
+    console.log(transform);
     $(document.body).addClass('presentmode');      
     $('.slides').css({
       '-moz-transform': transform,
@@ -51,35 +52,58 @@ var Sliderrr = function() {
   function movePrevious() {
     move('prev');
   }
+  function enablePresentMode() {
+    if (!$(document.body).hasClass('presentmode')) {    
+      document.body.scrollTop = 0;            
+      showSlide(current);    
+    }
+  }
+  function disablePresentMode() {
+    if ($(document.body).hasClass('presentmode')) {        
+      $(document.body).removeClass('presentmode');
+      $('.slides').css({'-moz-transform': '', '-webkit-transform': ''});            
+      document.body.scrollTop = Math.max(0, current.offset().top - 100);    
+    }
+  }
+  function togglePresentMode() {
+    if ($(document.body).hasClass('presentmode')) {            
+      disablePresentMode();
+    } else {
+      enablePresentMode();
+    }
+  }
               
   function init() {
-    var ARROW_LEFT = 37,
+    var PAGE_UP = 33,
+      PAGE_DOWN = 34,
+      ARROW_LEFT = 37,
       ARROW_UP = 38,
       ARROW_RIGHT = 39,
       ARROW_DOWN = 40,
       TAB = 9,
       ESC = 27;
 
-    $(document).keydown(function(e) {      
+    $(document).keydown(function(e) {            
       switch (e.keyCode) {
         case TAB: 
           e.preventDefault();
           break;
+        case PAGE_UP:
         case ARROW_LEFT: 
           movePrevious();
           e.preventDefault();
-          break;          
+          break;     
+        case PAGE_DOWN:               
         case ARROW_RIGHT:
           moveNext();
           e.preventDefault();
           break;
+        case 66:
+          togglePresentMode();
+          break;
         case ESC:
           if (e.metaKey) {
-            $(document.body).removeClass('presentmode');
-            $('.slides').css({
-              '-moz-transform': '',
-              '-webkit-transform': ''          
-            });
+            disablePresentMode();
           } else {
             $('#browser').remove();            
           }
@@ -88,11 +112,8 @@ var Sliderrr = function() {
     });
     
     $('.slides section').live('dblclick', function() {
-      if (!$(document.body).hasClass('presentmode')) {
-        document.body.scrollTop = 0;
-        current = $(this);
-        showSlide(current);
-      }
+      current = $(this);
+      enablePresentMode();      
     });
     
     $('.popover').live('click', function(e) {
@@ -103,6 +124,7 @@ var Sliderrr = function() {
       e.preventDefault();
     });
     
+    // Handle links to open in iframes, and popovers
     $('a').live('click', function(e) {
       e.preventDefault();      
       
@@ -116,20 +138,10 @@ var Sliderrr = function() {
       var browser = document.getElementById('browser'),
         frame = document.getElementById('browser_frame');
       frame.contentWindow.onload = function() {
-
         frame.contentWindow.document.addEventListener('keydown', function(e) {
           var KEY_S = 83;
           if (e.keyCode == ESC) {
-            browser.parentNode.removeChild(browser);
-          } else if (e.keyCode == KEY_S) {            
-            // var document = frame.contentWindow.document;
-            // 
-            // document.body.innerHTML = '';
-            // 
-            // var pre = document.body.appendChild(document.createElement("pre"));            
-            // pre.style.overflow = 'auto';
-            // pre.style.whiteSpace = 'pre-wrap';
-            // pre.appendChild(document.createTextNode(document.documentElement.innerHTML));            
+            browser.parentNode.removeChild(browser);          
           }
         }, false);        
       };
