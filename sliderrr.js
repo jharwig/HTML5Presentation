@@ -99,6 +99,9 @@ var Sliderrr = function() {
       e.preventDefault();
       $(this).hide();
     })
+    $('button').live('click', function(e){
+      e.preventDefault();
+    });
     
     $('a').live('click', function(e) {
       e.preventDefault();      
