@@ -16,13 +16,49 @@ body {
   
   &.presentmode {
     overflow: hidden;
+    
+    $overlay-start: rgba(0,0,0,0.1);
+    $overlay-end: rgba(0,0,0,0.0);
+    #overlayt, #overlayr, #overlayb, #overlayl {
+      display: none;
+      position: absolute;  
+    }
+    #overlayt, #overlayb {
+      left: 0;
+      right: 0;
+    }
+    #overlayr, #overlayl {
+      top: 0;
+      bottom:0;      
+    }
+    #overlayt {  
+      top: 0;
+      @include linear-gradient(color-stops($overlay-start, $overlay-end));
+    }
+    #overlayr {  
+      right: 0;      
+      @include linear-gradient(color-stops($overlay-start, $overlay-end), right);
+    }
+    #overlayb {  
+      bottom: 0;
+      @include linear-gradient(color-stops($overlay-start, $overlay-end), bottom);
+    }
+    #overlayl {  
+      left: 0;
+      @include linear-gradient(color-stops($overlay-start, $overlay-end), left);
+    }
     .slides {
       -webkit-transform-origin: 0 0;
       -moz-transform-origin: 0 0;
       -webkit-transition: -webkit-transform 0.5s ease-in-out;
       -moz-transition: -webkit-transform 0.5s ease-in-out;    
       
+      
       section {
+        opacity: 0.2;
+        &.current {
+          opacity: 1.0;
+        }
         &.b0 .b0, 
         &.b1 .b1, 
         &.b2 .b2, 
@@ -58,10 +94,25 @@ q {
   &:after  {content: '”'}
 }
 
+ul.bracketize {
+  li:before {
+    content: '<';
+    color: #999;
+  }
+  li:after {
+    content: '>';
+    color: #999;
+  }
+}
+
+video {
+  width:400px;
+}
 
 #browser {
   position: absolute;
-  top: 20px;
+  display: block;
+  top: 60px;
   left: 20px;
   right: 20px;
   bottom: 20px;
@@ -78,7 +129,7 @@ q {
   
   clear: left;
   float: left;
-  margin: 1em 0;
+  margin: 3em 0;  
   display: inline-block;
   
   &.related {
@@ -276,6 +327,8 @@ body pre.textmate-source {
 .list {
   list-style: none; 
 }
+
+
 
 .slides section.center {
   text-align: center;

@@ -1,5 +1,10 @@
 var Sliderrr = function() {
   var current;
+  function doToVideo(section, func) {
+    if (section.find('video').length > 0) {
+      section.find('video')[0][func]();
+    }
+  }
   
   function showSlide(section) {   
     var s = $(section),
@@ -14,12 +19,24 @@ var Sliderrr = function() {
         transY = (s.data('offset').top*scale*-1 + vH/2 - h*scale/2),
         transform = 'translate('+ transX.toFixed(4) + 'px,' + transY.toFixed(4) + 'px) scale(' + scale.toFixed(4) + ')';
     
-    console.log(transform);
+    s.addClass('current');
     $(document.body).addClass('presentmode');      
     $('.slides').css({
       '-moz-transform': transform,
       '-webkit-transform': transform          
     });
+    
+    // if (scale == scaleX) {
+    //   $('#overlayt').height((vH - s.outerHeight(true)) / 2).show(); 
+    //   $('#overlayb').height((vH - s.outerHeight(true)) / 2).show();
+    //   $('#overlayl, #overlayr').hide();
+    // } else {
+    //   $('#overlayl').width((vW - s.outerWidth(true)) / 2).show(); 
+    //   $('#overlayr').width((vW - s.outerWidth(true)) / 2).show();
+    //   $('#overlayt, #overlayb').hide();      
+    // }
+    
+    doToVideo(s, 'play');
   }
   function move(func) {
     $('.popover').hide();
@@ -39,8 +56,11 @@ var Sliderrr = function() {
       }      
     }
       
+    doToVideo(current, 'pause');  
+      
     var el = current[func]('section');
     if (el && el.length) {
+      current.removeClass('current');
       current = el;
       current.removeClass('b0 b1 b2 b2 b3 b4 b5');        
       showSlide(current);
@@ -134,17 +154,14 @@ var Sliderrr = function() {
         return;
       }
       
-      $(document.body).append('<div id="browser"><iframe id="browser_frame" src="' + this.href + '"></iframe></div>');
-      var browser = document.getElementById('browser'),
-        frame = document.getElementById('browser_frame');
-      frame.contentWindow.onload = function() {
-        frame.contentWindow.document.addEventListener('keydown', function(e) {
-          var KEY_S = 83;
-          if (e.keyCode == ESC) {
-            browser.parentNode.removeChild(browser);          
-          }
-        }, false);        
-      };
+      window.open(this.href);
+      
+      //$(document.body).append('<iframe id="browser" src="' + this.href + '"></iframe>');
+      // var browser = document.getElementById('browser'),
+      //           frame = document.getElementById('browser_frame');
+      //       frame.contentWindow.onload = function() {
+      //         browser.show();
+      //       };
     });
 
     // Cache sections offset
@@ -159,7 +176,9 @@ var Sliderrr = function() {
 
   return  {
     current: current,
-    init: init
+    init: function() {
+      setTimeout(init, 1000);
+    }
   }
 }();
 
