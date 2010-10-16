@@ -8,9 +8,13 @@
 	<link rel="stylesheet" href="css/tm.css" type="text/css" media="screen">
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>  
   <script type="text/javascript" src="sliderrr.js"></script>  
-
+  <script type="text/javascript" src="js/prototype.js"></script> 
+  <script type="text/javascript" src="js/particle_canvas.js"></script> 
   <script>  
-      window.onload = Sliderrr.init;
+      window.onload = function() {
+        new Emitter($('particle_canvas_demo'));        
+        Sliderrr.init();
+      }
   </script>  
 </head>
 <body>
@@ -241,7 +245,7 @@
         <!-- <input name="q" autofocus> -->
         
         <pre class="textmate-source mac_classic"><span class="text text_html text_html_basic"><span class="meta meta_tag meta_tag_inline meta_tag_inline_any meta_tag_inline_any_html"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_begin punctuation_definition_tag_begin_html">&lt;</span><span class="entity entity_name entity_name_tag entity_name_tag_inline entity_name_tag_inline_any entity_name_tag_inline_any_html">input</span> <span class="entity entity_other entity_other_attribute-name entity_other_attribute-name_html">name</span>=<span class="string string_quoted string_quoted_double string_quoted_double_html"><span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_begin punctuation_definition_string_begin_html">"</span>q<span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_end punctuation_definition_string_end_html">"</span></span> <span class="entity entity_other entity_other_attribute-name entity_other_attribute-name_html">type</span>=<span class="string string_quoted string_quoted_double string_quoted_double_html"><span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_begin punctuation_definition_string_begin_html">"</span>search<span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_end punctuation_definition_string_end_html">"</span></span> <span class="entity entity_other entity_other_attribute-name entity_other_attribute-name_html">placeholder</span>=<span class="string string_quoted string_quoted_double string_quoted_double_html"><span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_begin punctuation_definition_string_begin_html">"</span>Search...<span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_end punctuation_definition_string_end_html">"</span></span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_end punctuation_definition_tag_end_html">&gt;</span></span></span></pre>
-        <input name="q" type="search" placeholder="Search...">
+        <input name="q" type="search" placeholder="Search..." autocomplete="false">
         
         <pre class="textmate-source mac_classic b0"><span class="text text_html text_html_basic"><span class="meta meta_tag meta_tag_inline meta_tag_inline_any meta_tag_inline_any_html"><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_begin punctuation_definition_tag_begin_html">&lt;</span><span class="entity entity_name entity_name_tag entity_name_tag_inline entity_name_tag_inline_any entity_name_tag_inline_any_html">input</span> <span class="entity entity_other entity_other_attribute-name entity_other_attribute-name_html">type</span>=<span class="string string_quoted string_quoted_double string_quoted_double_html"><span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_begin punctuation_definition_string_begin_html">"</span>range<span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_end punctuation_definition_string_end_html">"</span></span> <span class="entity entity_other entity_other_attribute-name entity_other_attribute-name_html">min</span>=<span class="string string_quoted string_quoted_double string_quoted_double_html"><span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_begin punctuation_definition_string_begin_html">"</span>0<span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_end punctuation_definition_string_end_html">"</span></span> <span class="entity entity_other entity_other_attribute-name entity_other_attribute-name_html">max</span>=<span class="string string_quoted string_quoted_double string_quoted_double_html"><span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_begin punctuation_definition_string_begin_html">"</span>10<span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_end punctuation_definition_string_end_html">"</span></span> <span class="entity entity_other entity_other_attribute-name entity_other_attribute-name_html">value</span>=<span class="string string_quoted string_quoted_double string_quoted_double_html"><span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_begin punctuation_definition_string_begin_html">"</span>6<span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_end punctuation_definition_string_end_html">"</span></span><span class="punctuation punctuation_definition punctuation_definition_tag punctuation_definition_tag_end punctuation_definition_tag_end_html">&gt;</span></span></span></pre>
         <input class="b0" type="range" min="0" max="10" value="6">
@@ -265,7 +269,7 @@
     <section>
       <h1>JavaScript</h1>
       <ul>   
-        <li><strong>Canvas</strong></li>
+        <li><strong id="particle_canvas_demo" options="{y_force:-1.9, max_particles: 150, respawn: 10, vel:[-2, 2], life:[0.02, .06]}" class="emitter">Canvas</strong></li>
         <li class="b0"><a href="http://www.w3.org/TR/2010/WD-html5-20100624/Overview.html#dom-document-getelementsbyclassname">getElementsByClassName</a></li>
         <li class="b1"><a href="http://www.w3.org/TR/2010/WD-html5-20100624/Overview.html#dnd">Drag and Drop</a></li>     
         <li class="b2"><a href="http://www.w3.org/TR/2010/WD-html5-20100624/Overview.html#dom-history-pushstate">pushState, replaceState, onhashchange</a></li>

@@ -75,6 +75,12 @@ body {
       }
     }
   }
+  &.zooming .slides {
+    -webkit-transform-origin: 50% 50%;
+    -moz-transform-origin: 50% 50%;
+    -webkit-transition: none;
+    -moz-transition: none;
+  }
 }
 
 

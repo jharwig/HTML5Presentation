@@ -1,5 +1,5 @@
 var Sliderrr = function() {
-  var current;
+  var current, $ = jQuery, currentTranslate, currentScale, currentScaleVal, currentTransX, currentTransY;
   function doToVideo(section, func) {
     if (section.find('video').length > 0) {
       section.find('video')[0][func]();
@@ -16,9 +16,15 @@ var Sliderrr = function() {
         scaleY = vH / h,
         scale = Math.min(scaleX, scaleY),
         transX = (s.data('offset').left*scale*-1 + vW/2 - w*scale/2),
-        transY = (s.data('offset').top*scale*-1 + vH/2 - h*scale/2),
-        transform = 'translate('+ transX.toFixed(4) + 'px,' + transY.toFixed(4) + 'px) scale(' + scale.toFixed(4) + ')';
+        transY = (s.data('offset').top*scale*-1 + vH/2 - h*scale/2);
     
+    currentTransX = transX;
+    currentTransY = transY;
+    currentTranslate = 'translate('+ transX.toFixed(4) + 'px,' + transY.toFixed(4) + 'px)';
+    currentScaleVal = scale;
+    currentScale = 'scale(' + currentScaleVal.toFixed(4) + ')';
+    
+    var transform = currentTranslate + ' ' + currentScale;
     s.addClass('current');
     $(document.body).addClass('presentmode');      
     $('.slides').css({
@@ -74,7 +80,8 @@ var Sliderrr = function() {
   }
   function enablePresentMode() {
     if (!$(document.body).hasClass('presentmode')) {    
-      document.body.scrollTop = 0;            
+      document.body.scrollTop = 0;    
+      document.body.scrollLeft = 0;                  
       showSlide(current);    
     }
   }
@@ -83,6 +90,7 @@ var Sliderrr = function() {
       $(document.body).removeClass('presentmode');
       $('.slides').css({'-moz-transform': '', '-webkit-transform': ''});            
       document.body.scrollTop = Math.max(0, current.offset().top - 100);    
+      document.body.scrollLeft = Math.max(0, current.offset().left - 100);          
     }
   }
   function togglePresentMode() {
@@ -144,6 +152,33 @@ var Sliderrr = function() {
       e.preventDefault();
     });
     
+    
+    $(window).bind('mousewheel', function() {      
+      var key;
+      return function(e) {return;
+        clearTimeout(key);
+        $(document.body).addClass('zooming');
+
+        var wheel = (e.wheelDelta) ? e.wheelDelta / 120 : -(e.detail || 0) / 3;
+        var vW = $(window).width(),
+          vH = $(window).height();
+          
+        currentScaleVal += (wheel / 500) * 5;
+        //console.log(currentScaleVal);
+        //console.log(currentScaleVal, e.wheelDelta, (e.wheelDelta / 120), (e.wheelDelta / 120)*0.5);
+        
+        var transform = 'translate(' + (currentTransX+vW/2) + 'px, ' + (currentTransY+vH/2) +  + 'px)' + ' scale(' + currentScaleVal.toFixed(4) + ')';
+        console.log(transform);
+        $('.slides').css({'-moz-transform': transform, '-webkit-transform': transform});            
+        
+        key = setTimeout(function() {
+          $(document.body).removeClass('zooming');
+          var transform = currentTranslate + ' ' + currentScale;
+          $('.slides').css({'-moz-transform': transform, '-webkit-transform': transform});            
+        }, 2000);
+      };
+    }());
+    
     // Handle links to open in iframes, and popovers
     $('a').live('click', function(e) {
       e.preventDefault();      
@@ -185,6 +220,7 @@ var Sliderrr = function() {
 
 // Space timeline
 $(function() {
+  var $ = jQuery;
   $('.timeline').each(function() {
     var dates = $.map($(this).find('time'), function(time) {
       return {
